@@ -13,24 +13,37 @@ class ListApp
         @list = List.new
     end
 
-    def add(item)
-        @list.add_item(item)
+    def add()
+        puts "Digit item name: "
+        item_name = gets.chomp
+        @list.add_item(item_name)
     end
 
-    def remove(index)
-        @list.remove_item(index)
+    def remove()
+        puts "Digit item index: "
+        index = gets.chomp.to_i
+        @list.remove_item(index-1)
     end
 
     def view_all
         @list.view_all()
     end
 
-    def check(index)
-        @list.check_item(index)
+    def check()
+        puts "Digit item index: "
+        index = gets.chomp.to_i
+        @list.check_item(index-1)
     end
 
     def delete_all
-        @list.remove_all()
+        puts "You wants all? Y/N"
+        answer = gets.chomp.upcase
+        if answer == "Y" || answer == "YES"
+            @list.remove_all()
+            puts "All items was erased"
+        else
+            puts "Invalid Option"
+        end 
     end
 
     def run
@@ -50,32 +63,19 @@ class ListApp
                 case opt
                 when "A"
                     "Add item"
-                    puts "Digit item name: "
-                    item_name = gets.chomp
-                    items.add(item_name)
+                    items.add()
                 when "R"
                     "Remove item"
-                    puts "Digit item index: "
-                    index = gets.chomp.to_i
-                    items.remove(index)
+                    items.remove()
                 when "V"
                     "view item"
                     items.view_all()
                 when "M"
                     "Mark item"
-                    puts "Digit item index: "
-                    index = gets.chomp.to_i
-                    items.check(index)
+                    items.check()
                 when "E"
                     "Erased all"
-                    puts "You wants all? Y/N"
-                    answer = gets.chomp.upcase
-                    if answer == "Y" || answer == "YES"
-                        items.delete_all()
-                        puts "All items was erased"
-                    else
-                        puts "Invalid Option"
-                    end                
+                    items.delete_all()             
                 when "C"
                     "Close"
                     puts "Thanks for using me"
