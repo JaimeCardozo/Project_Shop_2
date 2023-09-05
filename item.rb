@@ -12,5 +12,3 @@ class Item
         end
     end
 end
-item = Item.new("jamon")
-puts item
